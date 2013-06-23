@@ -31,7 +31,7 @@
 }
 
 .boo-slideshow-controls-prev {
-	background: url(../../images/prev.png) no-repeat;
+	background: url(../images/prev.png) no-repeat;
 	background-size: cover;
 	position: absolute;
 	bottom: 5px;
@@ -41,12 +41,12 @@
 }
 
 .boo-slideshow-controls-prev:hover {
-	background: url(../../images/prev_hover.png) no-repeat;
+	background: url(../images/prev_hover.png) no-repeat;
 	background-size: cover;
 }
 
 .boo-slideshow-controls-play {
-	background: url(../../images/play.png) no-repeat;
+	background: url(../images/play.png) no-repeat;
 	background-size: cover;
 	position: absolute;
 	bottom: 5px;
@@ -56,12 +56,12 @@
 }
 
 .boo-slideshow-controls-play:hover {
-	background: url(../../images/play_hover.png) no-repeat;
+	background: url(../images/play_hover.png) no-repeat;
 	background-size: cover;
 }
 
 .boo-slideshow-controls-pause {
-	background: url(../../images/pause.png) no-repeat;
+	background: url(../images/pause.png) no-repeat;
 	background-size: cover;
 	position: absolute;
 	bottom: 5px;
@@ -71,12 +71,12 @@
 }
 
 .boo-slideshow-controls-pause:hover {
-	background: url(../../images/pause_hover.png) no-repeat;
+	background: url(../images/pause_hover.png) no-repeat;
 	background-size: cover;
 }
 
 .boo-slideshow-controls-stop {
-	background: url(../../images/stop.png) no-repeat;
+	background: url(../images/stop.png) no-repeat;
 	background-size: cover;
 	position: absolute;
 	bottom: 5px;
@@ -86,12 +86,12 @@
 }
 
 .boo-slideshow-controls-stop:hover {
-	background: url(../../images/stop_hover.png) no-repeat;
+	background: url(../images/stop_hover.png) no-repeat;
 	background-size: cover;
 }
 
 .boo-slideshow-controls-next {
-	background: url(../../images/next.png) no-repeat;
+	background: url(../images/next.png) no-repeat;
 	background-size: cover;
 	position: absolute;
 	bottom: 5px;
@@ -101,7 +101,7 @@
 }
 
 .boo-slideshow-controls-next:hover {
-	background: url(../../images/next_hover.png) no-repeat;
+	background: url(../images/next_hover.png) no-repeat;
 	background-size: cover;
 }
 

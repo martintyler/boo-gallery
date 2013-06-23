@@ -91,8 +91,6 @@
 
 /* Slideshow */
 
-/* #boo-slideshow */
-
 .boo-slideshow-image {
 	position: absolute;
 	z-index: 20;
@@ -120,5 +118,5 @@
 .boo-slideshow-controls-play {
 }
 
-.boo-slideshow-controls-gallery {
+.boo-slideshow-controls-stop {
 }

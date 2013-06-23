@@ -461,12 +461,6 @@ Boo.Gallery.Slideshow = function(args) {
 			gallery.showPhoto(current);
 		}
 	};
-
-	if (settings.autoplay) {
-		this.play();
-	} else {
-		this.stop();
-	}
 	
 	$('.boo-slideshow-controls-next').click(function() {
 		controlDisplayFunc();
@@ -502,6 +496,12 @@ Boo.Gallery.Slideshow = function(args) {
 	$('.boo-slideshow-controls-stop').click(function() {
 		slideshow.goToGallery();
 	});
+
+	if (settings.autoplay) {
+		this.play();
+	} else {
+		this.stop();
+	}
 
 	this.showPhoto = function(num) {
 		var last = current;

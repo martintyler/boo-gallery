@@ -49,7 +49,6 @@ Boo.GPlus.PhotosFromAPI = function(gplus, width) {
 		photos.push(photo);
 	}
 
-	console.log(photos);
 	this.getPhotos = function() {
 		return photos;
 	}

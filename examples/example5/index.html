@@ -1,0 +1,81 @@
+<html>
+	<head>
+		<title>Boo Gallery - Examples</title>
+
+		<link type="text/css" rel="stylesheet" id="mtp-style" href="../../css/boo_gallery.css" />
+		<link type="text/css" rel="stylesheet" id="mtp-style" href="../css/common.css" />
+		<link type="text/css" rel="stylesheet" id="mtp-style" href="../css/controls1.css" />
+
+		<script type="text/javascript" src="../../js/boo_common.js"></script>
+		<script type="text/javascript" src="../../js/boo_gallery.js"></script>
+		<script type="text/javascript" src="../../js/boo_gplus.js"></script>
+
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+		<style>
+
+			#example-slideshow {
+				position: fixed;
+				overflow: hidden;
+				top: 60px;
+				left: 0px;
+				right: 0px;
+				bottom: 0px;
+				background: rgba(255, 255, 255, 0.8);
+			}
+
+		</style>
+
+	</head>
+
+	<body>
+
+		<div id="example-header">Boo Gallery - Slide behind nav example</div>
+		<div id="example-leftnav">
+			<ul>
+				<li><a href="../example1/index.html">Example 1</a></li>
+				<li><a href="../example2/index.html">Example 2</a></li>
+				<li><a href="../example3/index.html">Example 3</a></li>
+				<li><a href="../example4/index.html">Example 4</a></li>
+				<li class="example-active"><a href="../example5/index.html">Example 5</a></li>
+				<li><a href="../example6/index.html">Example 6</a></li>
+				<li><a href="../example7/index.html">Example 7</a></li>
+				<li><a href="../example8/index.html">Example 8</a></li>
+				<li><a href="../example9/index.html">Example 9</a></li>
+				<li><a href="../gplus/index.html">Google+ Example</a></li>
+				<li><a href="../flickr/index.html">Flickr Example</a></li>
+				<li><a href="../smugmug/index.html">SmugMug Example</a></li>
+				<li><a href="../json/index.html">JSON Example</a></li>
+			</ul>
+		</div>
+
+		<div id="example-container">
+			<div id="example-gallery"></div>
+			<div id="example-slideshow">
+				<div id="example-slideshow-box" class="boo-slideshow-controls">
+					<div id="boo-slideshow-caption" class="example-slideshow-controls-text"></div>
+					<div id="boo-slideshow-number" class="example-slideshow-controls-text"></div>
+					<div class="boo-slideshow-controls-prev"></div>
+					<div class="boo-slideshow-controls-play"></div>
+					<div class="boo-slideshow-controls-stop"></div>
+					<div class="boo-slideshow-controls-next"></div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			var gallery = new Boo.GPlus.SlideshowGallery({
+				slideshowContainer: '#example-slideshow',
+				slideshowSettings: {
+					viewLeft: '200px'
+				},
+				galleryContainer: '#example-gallery',
+				startWithSlideshow: false,
+				shuffle: true
+			});
+			gallery.loadAlbum('115182708880590896480', '5731675765619676305');
+			gallery.showGallery();
+		</script>
+
+	</body>
+</html>

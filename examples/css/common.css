@@ -1,0 +1,78 @@
+/********************************************************************
+	General
+********************************************************************/
+
+* {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+#example-header {
+	position: fixed;
+	top: 10px;
+	left: 10px;
+	right: 10px;
+	height: 40px;
+	z-index: 10;
+	background: rgba(235, 235, 235, 0.7);
+	padding: 5px;
+}
+
+#example-leftnav {
+	position: fixed;
+	top: 70px;
+	left: 10px;
+	bottom: 10px;
+	width: 180px;
+	z-index: 10;
+	background: rgba(235, 235, 235, 0.7);
+	padding: 5px;
+	text-align: left;
+}
+
+#example-leftnav ul { 
+	padding: 0px; 
+	margin: 0px;
+}
+
+#example-leftnav ul li { 
+	position: relative; 
+	list-style: none; 
+	display: block;
+	padding-top: 2px;
+}
+
+#example-leftnav ul li a {
+	display: block; 
+	padding: 5px 5px;
+	font-size: 14px;
+	text-decoration: none;
+}
+
+#example-leftnav ul li a:link {
+	color: #4D4D4D;
+}
+
+#example-leftnav ul li a:visited {
+	color: #4D4D4D;
+}
+
+#example-leftnav ul li a:hover {
+	color: #0088cc;
+}
+
+#example-leftnav ul li a:active {
+	color: #4D4D4D;
+}
+
+#example-leftnav .example-active a {
+	color: #0088cc !important;
+}
+
+#example-container {
+	position: absolute;
+	top: 60px;
+	left: 200px;
+	bottom: 0px;
+	right: 0px;
+	padding: 5px;
+}

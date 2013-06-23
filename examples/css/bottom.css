@@ -1,0 +1,18 @@
+#example-leftnav {
+	bottom: 70px;
+}
+
+#example-container {
+	bottom: 60px;
+}
+
+#example-footer {
+	position: fixed;
+	left: 10px;
+	bottom: 10px;
+	right: 10px;
+	height: 40px;
+	z-index: 10;
+	background: rgba(235, 235, 235, 0.7);
+	padding: 5px;
+}

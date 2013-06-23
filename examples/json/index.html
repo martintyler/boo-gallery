@@ -1,0 +1,209 @@
+<html>
+	<head>
+		<title>Boo Gallery - Examples</title>
+
+		<link type="text/css" rel="stylesheet" id="mtp-style" href="../../css/boo_gallery.css" />
+		<link type="text/css" rel="stylesheet" id="mtp-style" href="../css/common.css" />
+		<link type="text/css" rel="stylesheet" id="mtp-style" href="../css/controls1.css" />
+
+		<script type="text/javascript" src="../../js/boo_common.js"></script>
+		<script type="text/javascript" src="../../js/boo_gallery.js"></script>
+
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+		<style>
+		
+			#example-slideshow {
+				position: absolute;
+				overflow: hidden;
+				top: 0px;
+				left: 0px;
+				right: 0px;
+				bottom: 0px;
+				z-index: 20;
+			}
+
+		</style>
+
+	</head>
+
+	<body>
+
+		<div id="example-header">Boo Gallery - JSON Example</div>
+		<div id="example-leftnav">
+			<ul>
+				<li><a href="../example1/index.html">Example 1</a></li>
+				<li><a href="../example2/index.html">Example 2</a></li>
+				<li><a href="../example3/index.html">Example 3</a></li>
+				<li><a href="../example4/index.html">Example 4</a></li>
+				<li><a href="../example5/index.html">Example 5</a></li>
+				<li><a href="../example6/index.html">Example 6</a></li>
+				<li><a href="../example7/index.html">Example 7</a></li>
+				<li><a href="../example8/index.html">Example 8</a></li>
+				<li><a href="../example9/index.html">Example 9</a></li>
+				<li><a href="../gplus/index.html">Google+ Example</a></li>
+				<li><a href="../flickr/index.html">Flickr Example</a></li>
+				<li><a href="../smugmug/index.html">SmugMug Example</a></li>
+				<li class="example-active"><a href="../json/index.html">JSON Example</a></li>
+			</ul>
+		</div>
+
+		<div id="example-container">
+			<div id="example-gallery"></div>
+			<div id="example-slideshow">
+				<div id="example-slideshow-box" class="boo-slideshow-controls">
+					<div id="boo-slideshow-caption" class="example-slideshow-controls-text"></div>
+					<div id="boo-slideshow-number" class="example-slideshow-controls-text"></div>
+					<div class="boo-slideshow-controls-prev"></div>
+					<div class="boo-slideshow-controls-play"></div>
+					<div class="boo-slideshow-controls-stop"></div>
+					<div class="boo-slideshow-controls-next"></div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			var photos = [
+				{
+					"width": "2048",
+					"height": "1360",
+					"caption": "Abbots Grange - Broadway",
+					"filename": "Abbots Grange - Broadway.jpg",
+					"thumbnail": "https://lh6.googleusercontent.com/-YLDL8oKZokU/T4sA4nL8unI/AAAAAAAAAQg/oKdul7vsKB8/w594/Abbots%252520Grange%252520-%252520Broadway.jpg",
+					"large": "https://lh6.googleusercontent.com/-YLDL8oKZokU/T4sA4nL8unI/AAAAAAAAAQg/oKdul7vsKB8/s2048/Abbots%252520Grange%252520-%252520Broadway.jpg"
+				},
+				{
+					"width": "2048",
+					"height": "1463",
+					"caption": "Alamo Square - San Francisco",
+					"filename": "Alamo Square - San Francisco.jpg",
+					"thumbnail": "https://lh3.googleusercontent.com/-EKjB4GPS6iM/T4sAvRKa7rI/AAAAAAAAAQE/nFjiyXR4Np8/w594/Alamo%252520Square%252520-%252520San%252520Francisco.jpg",
+					"large": "https://lh3.googleusercontent.com/-EKjB4GPS6iM/T4sAvRKa7rI/AAAAAAAAAQE/nFjiyXR4Np8/s2048/Alamo%252520Square%252520-%252520San%252520Francisco.jpg"
+				},
+				{
+					"width": "1360",
+					"height": "2048",
+					"caption": "Amisfield Winery - Queenstown",
+					"filename": "Amisfield Winery - Queenstown.jpg",
+					"thumbnail": "https://lh4.googleusercontent.com/-yVORqJo--v0/T4sAwrjO7_I/AAAAAAAAAQM/eJmhE9KOvkA/w594/Amisfield%252520Winery%252520-%252520Queenstown.jpg",
+					"large": "https://lh4.googleusercontent.com/-yVORqJo--v0/T4sAwrjO7_I/AAAAAAAAAQM/eJmhE9KOvkA/s2048/Amisfield%252520Winery%252520-%252520Queenstown.jpg"
+				},
+				{
+					"width": "1360",
+					"height": "2048",
+					"caption": "Central Park Lake - New York",
+					"filename": "Central Park Lake - New York.jpg",
+					"thumbnail": "https://lh3.googleusercontent.com/-yqP0XPXR23M/T4sAy6EMXlI/AAAAAAAAAQQ/A3QsSpjh65g/w594/Central%252520Park%252520Lake%252520-%252520New%252520York.jpg",
+					"large": "https://lh3.googleusercontent.com/-yqP0XPXR23M/T4sAy6EMXlI/AAAAAAAAAQQ/A3QsSpjh65g/s2048/Central%252520Park%252520Lake%252520-%252520New%252520York.jpg"
+				},
+				{
+					"width": "2048",
+					"height": "1360",
+					"caption": "Central Park Skating - New York",
+					"filename": "Central Park Skating - New York.jpg",
+					"thumbnail": "https://lh5.googleusercontent.com/-PqFpaEqfyeY/T4sBIUwATAI/AAAAAAAAAQw/sOYBHhQgRNI/w594/Central%252520Park%252520Skating%252520-%252520New%252520York.jpg",
+					"large": "https://lh5.googleusercontent.com/-PqFpaEqfyeY/T4sBIUwATAI/AAAAAAAAAQw/sOYBHhQgRNI/s2048/Central%252520Park%252520Skating%252520-%252520New%252520York.jpg"
+				},
+				{
+					"width": "2048",
+					"height": "1360",
+					"caption": "Golden Gate - San Francisco",
+					"filename": "Golden Gate - San Francisco.jpg",
+					"thumbnail": "https://lh3.googleusercontent.com/-cl0lzu_YV7A/T4sA-hhploI/AAAAAAAAAQo/qfLqJYUA0Mw/w594/Golden%252520Gate%252520-%252520San%252520Francisco.jpg",
+					"large": "https://lh3.googleusercontent.com/-cl0lzu_YV7A/T4sA-hhploI/AAAAAAAAAQo/qfLqJYUA0Mw/s2048/Golden%252520Gate%252520-%252520San%252520Francisco.jpg"
+				},
+				{
+					"width": "2048",
+					"height": "1360",
+					"caption": "Grand Central - New York",
+					"filename": "Grand Central - New York.jpg",
+					"thumbnail": "https://lh4.googleusercontent.com/-8kQoKr-lO38/T4sBKnl6RpI/AAAAAAAAAQ4/3sRiPSUcbOQ/w594/Grand%252520Central%252520-%252520New%252520York.jpg",
+					"large": "https://lh4.googleusercontent.com/-8kQoKr-lO38/T4sBKnl6RpI/AAAAAAAAAQ4/3sRiPSUcbOQ/s2048/Grand%252520Central%252520-%252520New%252520York.jpg"
+				},
+				{
+					"width": "2048",
+					"height": "1360",
+					"caption": "Kirkstone Pass Inn - Lake District",
+					"filename": "Kirkstone Pass Inn - Lake District.jpg",
+					"thumbnail": "https://lh3.googleusercontent.com/-tRUl10-2Drs/T4sBN048nqI/AAAAAAAAARI/d-AFxtd90E0/w594/Kirkstone%252520Pass%252520Inn%252520-%252520Lake%252520District.jpg",
+					"large": "https://lh3.googleusercontent.com/-tRUl10-2Drs/T4sBN048nqI/AAAAAAAAARI/d-AFxtd90E0/s2048/Kirkstone%252520Pass%252520Inn%252520-%252520Lake%252520District.jpg"
+				},
+				{
+					"width": "2048",
+					"height": "1536",
+					"caption": "Lake Wakatipu - Queenstown",
+					"filename": "Lake Wakatipu - Queenstown.jpg",
+					"thumbnail": "https://lh5.googleusercontent.com/-EU1t4skfsR0/T4sBLpDz4eI/AAAAAAAAAQ8/T9rDfYjYt1c/w594/Lake%252520Wakatipu%252520-%252520Queenstown.jpg",
+					"large": "https://lh5.googleusercontent.com/-EU1t4skfsR0/T4sBLpDz4eI/AAAAAAAAAQ8/T9rDfYjYt1c/s2048/Lake%252520Wakatipu%252520-%252520Queenstown.jpg"
+				},
+				{
+					"width": "1361",
+					"height": "2048",
+					"caption": "Louvre - Paris",
+					"filename": "Louvre - Paris.jpg",
+					"thumbnail": "https://lh3.googleusercontent.com/-O6JY52tEGG4/T4sBPiq5YpI/AAAAAAAAARU/VmzM1wXLRD8/w594/Louvre%252520-%252520Paris.jpg",
+					"large": "https://lh3.googleusercontent.com/-O6JY52tEGG4/T4sBPiq5YpI/AAAAAAAAARU/VmzM1wXLRD8/s2048/Louvre%252520-%252520Paris.jpg"
+				},
+				{
+					"width": "1360",
+					"height": "2048",
+					"caption": "Luau - Maui",
+					"filename": "Luau - Maui.jpg",
+					"thumbnail": "https://lh3.googleusercontent.com/-a8Oc2vciyvY/T4sBOnk5H_I/AAAAAAAAARM/-KXbm9OCTUE/w594/Luau%252520-%252520Maui.jpg",
+					"large": "https://lh3.googleusercontent.com/-a8Oc2vciyvY/T4sBOnk5H_I/AAAAAAAAARM/-KXbm9OCTUE/s2048/Luau%252520-%252520Maui.jpg"
+				},
+				{
+					"width": "1360",
+					"height": "2048",
+					"caption": "Opera House - Sydney",
+					"filename": "Opera House - Sydney.jpg",
+					"thumbnail": "https://lh5.googleusercontent.com/-t9y5YoiOS5A/T4sBR_WmxFI/AAAAAAAAARg/pKk6f5YNFe8/w594/Opera%252520House%252520-%252520Sydney.jpg",
+					"large": "https://lh5.googleusercontent.com/-t9y5YoiOS5A/T4sBR_WmxFI/AAAAAAAAARg/pKk6f5YNFe8/s2048/Opera%252520House%252520-%252520Sydney.jpg"
+				},
+				{
+					"width": "2048",
+					"height": "1359",
+					"caption": "St Lucia Huts",
+					"filename": "St Lucia Huts.jpg",
+					"thumbnail": "https://lh6.googleusercontent.com/-fry3sjq8IVs/T4sBlPLyOCI/AAAAAAAAARw/n47vmLoyVe4/w594/St%252520Lucia%252520Huts.jpg",
+					"large": "https://lh6.googleusercontent.com/-fry3sjq8IVs/T4sBlPLyOCI/AAAAAAAAARw/n47vmLoyVe4/s2048/St%252520Lucia%252520Huts.jpg"
+				},
+				{
+					"width": "2048",
+					"height": "1356",
+					"caption": "St Lucia Sunset",
+					"filename": "St Lucia Sunset.jpg",
+					"thumbnail": "https://lh4.googleusercontent.com/-IYDMniUWqUA/T4sBgIn4tjI/AAAAAAAAARo/FD3PPjK5cRs/w594/St%252520Lucia%252520Sunset.jpg",
+					"large": "https://lh4.googleusercontent.com/-IYDMniUWqUA/T4sBgIn4tjI/AAAAAAAAARo/FD3PPjK5cRs/s2048/St%252520Lucia%252520Sunset.jpg"
+				},
+				{
+					"width": "2048",
+					"height": "1360",
+					"caption": "Times Square Signs - New York",
+					"filename": "Times Square Signs - New York.jpg",
+					"thumbnail": "https://lh6.googleusercontent.com/-ZmZEUZavpLc/T4sBrXPJMBI/AAAAAAAAAR4/YBpc_hF6jDM/w594/Times%252520Square%252520Signs%252520-%252520New%252520York.jpg",
+					"large": "https://lh6.googleusercontent.com/-ZmZEUZavpLc/T4sBrXPJMBI/AAAAAAAAAR4/YBpc_hF6jDM/s2048/Times%252520Square%252520Signs%252520-%252520New%252520York.jpg"
+				},
+				{
+					"width": "2048",
+					"height": "1360",
+					"caption": "Waitiri Creek - Central Otago",
+					"filename": "Waitiri Creek - Central Otago.jpg",
+					"thumbnail": "https://lh3.googleusercontent.com/-LwodoOp5w5Y/T4sBturR86I/AAAAAAAAASA/tGmXRdDLxos/w594/Waitiri%252520Creek%252520-%252520Central%252520Otago.jpg",
+					"large": "https://lh3.googleusercontent.com/-LwodoOp5w5Y/T4sBturR86I/AAAAAAAAASA/tGmXRdDLxos/s2048/Waitiri%252520Creek%252520-%252520Central%252520Otago.jpg"
+				}
+			];
+
+			var gallery = new Boo.Gallery.SlideshowGallery({
+				slideshowContainer: '#example-slideshow',
+				galleryContainer: '#example-gallery',
+				startWithSlideshow: false,
+				shuffle: true
+			});
+
+			gallery.push(photos);
+
+		</script>
+
+	</body>
+</html>

@@ -19,7 +19,6 @@ Boo.Gallery.ColumnGallery = function(args) {
 	var maxCols = settings.maxCols || 5;
 	var cols;
 	var lastPhoto;
-	var cache = [];
 	var numCols;
 	var fullWidth;
 	var width;
@@ -28,6 +27,8 @@ Boo.Gallery.ColumnGallery = function(args) {
 
 	var slideshow = settings.slideshow;
 	var gallery = this;
+
+	this.cache = [];
 
 	if (settings.hidden) {
 		container.hide();
@@ -102,7 +103,9 @@ Boo.Gallery.ColumnGallery = function(args) {
 			img.bind('load', function() {
 				photo.gallery.ratio = this.width / this.height;
 				if (resizeTimer == undefined) {
-					resizeTimer = setTimeout(gallery.redraw, 250);
+					resizeTimer = setTimeout(function() {
+						gallery.redraw.call(gallery);
+					}, 250);
 				}
 			});
 		}
@@ -222,11 +225,11 @@ Boo.Gallery.ColumnGallery = function(args) {
 	};
 
 	this.push = function(photos) {
-		var start = cache.length;
+		var start = this.cache.length;
 		if (start > 0) {
 			removeSpacers();
 		}
-		cache = cache.concat(photos);
+		this.cache = this.cache.concat(photos);
 		draw(photos, start);
 	};
 
@@ -235,18 +238,20 @@ Boo.Gallery.ColumnGallery = function(args) {
 	this.redraw = function() {
 		container.html('');
 		reset();
-		draw(cache, 0);
+		draw(this.cache, 0);
 		resizeTimer = undefined;
 	};
 
 	this.onresize = function() {
 		if (resizeTimer == undefined) {
-			resizeTimer = setTimeout(this.redraw, 250);
+			resizeTimer = setTimeout(function() {
+				gallery.redraw.call(gallery);
+			}, 250);
 		}
 	};
 
 	this.showPhoto = function(num) {
-		var photo = cache[num];
+		var photo = this.cache[num];
 		$('.boo-imgdiv').css({ opacity: 0.25 });
 		container.show();
 		photo.gallery.div.css({ opacity: 1 });
@@ -260,7 +265,7 @@ Boo.Gallery.ColumnGallery = function(args) {
 	};
 
 	$(window).resize(function() {
-		gallery.onresize();
+		gallery.onresize.call(gallery);
 	});
 };
 
@@ -273,7 +278,6 @@ Boo.Gallery.Slideshow = function(args) {
 	var fullWidth;
 	var imgHeight;
 	var nextWidth;
-	var cache = [];
 	var current = 0;
 	var timeout;
 	var initialised = false;
@@ -283,6 +287,8 @@ Boo.Gallery.Slideshow = function(args) {
 	var slidediv;
 	var nextClickArea;
 	var prevClickArea;
+
+	this.cache = [];
 
 	if (gallery) {
 		gallery.setSlideshow(slideshow);
@@ -399,8 +405,8 @@ Boo.Gallery.Slideshow = function(args) {
 	};
 
 	var showCurrent = function(last, slideTime) {
-		cache[last].slideshow.div.animate({ opacity: 0.1 }, 250);
-		var photo = cache[current];
+		this.cache[last].slideshow.div.animate({ opacity: 0.1 }, 250);
+		var photo = this.cache[current];
 		photo.slideshow.div.animate({ opacity: 1 }, 250);
 		slidediv.animate({ left: getPositionForPhoto(photo) }, slideTime, 'swing', function() {
 		});
@@ -413,7 +419,7 @@ Boo.Gallery.Slideshow = function(args) {
 			$(this).animate({ opacity: 1 }, 500);
 		});
 		$('#boo-slideshow-number').animate({ opacity: 0 }, 250, function() {
-			$(this).html((current+1)+' out of '+(cache.length));
+			$(this).html((current+1)+' out of '+(this.cache.length));
 			$(this).animate({ opacity: 1 }, 500);
 		});
 	};
@@ -421,7 +427,7 @@ Boo.Gallery.Slideshow = function(args) {
 	this.next = function() {
 		var last = current;
 		current += 1;
-		if (current == cache.length) {
+		if (current == this.cache.length) {
 			current = 0;
 		}
 		showCurrent(last, 250);
@@ -431,7 +437,7 @@ Boo.Gallery.Slideshow = function(args) {
 		var last = current;
 		current -= 1;
 		if (current < 0) {
-			current = cache.length - 1;
+			current = this.cache.length - 1;
 		}
 		showCurrent(last, 250);
 	};
@@ -509,7 +515,7 @@ Boo.Gallery.Slideshow = function(args) {
 		container.fadeIn(1000);
 		if (initialised == false) {
 			reset();
-			draw(cache, false);
+			draw(this.cache, false);
 		}
 		$('.boo-slideshow-controls').fadeIn(1000);
 		showCurrent(last, 0);
@@ -556,11 +562,11 @@ Boo.Gallery.Slideshow = function(args) {
 		}
 		slidediv.css({ left: getPositionForPhoto(photos[current]) });
 		$('#boo-slideshow-caption').html(photos[current].slideshowCaption || photos[current].caption);
-		$('#boo-slideshow-number').html((current+1)+' out of '+(cache.length));
+		$('#boo-slideshow-number').html((current+1)+' out of '+(slideshow.cache.length));
 	};
 
 	this.push = function(photos) {
-		cache = cache.concat(photos);
+		this.cache = this.cache.concat(photos);
 		if (initialised) {
 			draw(photos, false);
 		}
@@ -573,18 +579,20 @@ Boo.Gallery.Slideshow = function(args) {
 			viewdiv.html('');
 		}
 		reset();
-		draw(cache, true);
+		draw(this.cache, true);
 		resizeTimer = undefined;
 	};
 
 	this.onresize = function() {
 		if (resizeTimer == undefined) {
-			resizeTimer = setTimeout(this.redraw, 250);
+			resizeTimer = setTimeout(function() {
+				slideshow.redraw.call(slideshow);
+			}, 250);
 		}
 	};
 
 	$(window).resize(function() {
-		slideshow.onresize();
+		slideshow.onresize.call(slideshow);
 	});
 };
 

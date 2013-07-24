@@ -204,7 +204,7 @@ Boo.Gallery.ColumnGallery = function(args) {
 		if (slideshow) {
 			$('.boo-lightbox').bind('click', function() {
 				container.fadeOut(1000);
-				slideshow.showPhoto($(this).data('photo-num'));
+				slideshow.showPhoto.call(slideshow, $(this).data('photo-num'));
 			});
 		}
 
@@ -405,8 +405,8 @@ Boo.Gallery.Slideshow = function(args) {
 	};
 
 	var showCurrent = function(last, slideTime) {
-		this.cache[last].slideshow.div.animate({ opacity: 0.1 }, 250);
-		var photo = this.cache[current];
+		slideshow.cache[last].slideshow.div.animate({ opacity: 0.1 }, 250);
+		var photo = slideshow.cache[current];
 		photo.slideshow.div.animate({ opacity: 1 }, 250);
 		slidediv.animate({ left: getPositionForPhoto(photo) }, slideTime, 'swing', function() {
 		});
@@ -419,7 +419,7 @@ Boo.Gallery.Slideshow = function(args) {
 			$(this).animate({ opacity: 1 }, 500);
 		});
 		$('#boo-slideshow-number').animate({ opacity: 0 }, 250, function() {
-			$(this).html((current+1)+' out of '+(this.cache.length));
+			$(this).html((current+1)+' out of '+(slideshow.cache.length));
 			$(this).animate({ opacity: 1 }, 500);
 		});
 	};
